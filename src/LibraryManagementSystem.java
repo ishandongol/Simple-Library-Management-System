@@ -186,10 +186,9 @@ public class LibraryManagementSystem {
             System.out.println("User Management");
             underLine();
             System.out.println("1. Create new User");
-            System.out.println("2. Update User");
-            System.out.println("3. Delete User");
-            System.out.println("4. Search User");
-            System.out.println("5. Exit");
+            System.out.println("2. Delete User");
+            System.out.println("3. Search User");
+            System.out.println("4. Exit");
             underLine();
 
             defaultInterface();
@@ -210,23 +209,19 @@ public class LibraryManagementSystem {
                         System.out.println("User Management");
                         underLine();
                         System.out.println("1. Create new User");
-                        System.out.println("2. Update User");
-                        System.out.println("3. Delete User");
+                        System.out.println("2. Delete User");
+                        System.out.println("3. Search User");
                         System.out.println("4. Exit");
                         underLine();
                     }
                 }
 
             } else if (option == 2) {
-                System.out.println("Not Available");
-                timeout();
-                //updateUser();
-            } else if (option == 3) {
                 removeUser();
-            } else if (option == 4) {
+            } else if (option == 3) {
 
                 searchUser();
-            } else if (option == 5) {
+            } else if (option == 4) {
 
                 break;
 
@@ -315,10 +310,25 @@ public class LibraryManagementSystem {
         System.out.println("Inventory");
         underLine();
         System.out.println("1. Add new Books");
-        System.out.println("2. Update Books");
-        System.out.println("3. Delete Books");
+        System.out.println("2. Search Books");
         underLine();
-        System.out.println("Update Inventory");
+        int input = sc.nextInt();
+        if(input == 1){
+            addHeader();
+            System.out.println("Insert New Books");
+            underLine();
+            System.out.println("Enter 'ex' to Exit");
+            underLine();
+            sc.nextLine();
+            System.out.print("Enter Book ID, Book Name, ISBN, Author, Copies, Cost: ");
+
+            List<String> bookDetails = Arrays.asList(sc.nextLine().split(","));
+            bookHandler.create(new Books(Integer.valueOf(bookDetails.get(0)),bookDetails.get(1),bookDetails.get(2),bookDetails.get(3),Integer.valueOf(bookDetails.get(4)),Float.valueOf(bookDetails.get(5))));
+            System.out.print("\033[H\033[2J");
+
+        }else if(input==2){
+            searchBooks();
+        }
 
     }
 

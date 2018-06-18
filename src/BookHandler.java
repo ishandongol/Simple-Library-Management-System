@@ -12,14 +12,11 @@ public class BookHandler extends Database<Books> {
     }
 
 
-    public boolean create(Books object, User currentUser) {
-        if (Authentication.authenticate(currentUser)) {
+    public boolean create(Books object) {
             System.out.println("\nBook" + object + "\nInserted");
 
             return super.create(object);
-        }
-        System.out.println("Student Not Authorized to Create");
-        return false;
+
 
     }
 

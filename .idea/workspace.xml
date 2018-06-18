@@ -2,9 +2,8 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="8fd41d10-01d6-4c94-b4b6-b5ce26b34227" name="Default" comment="">
-      <change beforePath="$PROJECT_DIR$/src/Books.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Books.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/BookHandler.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/BookHandler.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/LibraryManagementSystem.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/LibraryManagementSystem.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/Student.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Student.java" afterDir="false" />
     </list>
     <ignored path="$PROJECT_DIR$/out/" />
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
@@ -19,8 +18,8 @@
       <file leaf-file-name="LibraryManagementSystem.java" pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/src/LibraryManagementSystem.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="345">
-              <caret line="145" column="64" lean-forward="true" selection-start-line="145" selection-start-column="64" selection-end-line="145" selection-end-column="64" />
+            <state relative-caret-position="395">
+              <caret line="209" column="36" lean-forward="true" selection-start-line="209" selection-start-column="36" selection-end-line="209" selection-end-column="36" />
               <folding>
                 <element signature="imports" expanded="true" />
               </folding>
@@ -31,7 +30,7 @@
       <file leaf-file-name="Books.java" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/Books.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="432">
+            <state relative-caret-position="972">
               <caret line="78" column="44" selection-start-line="78" selection-start-column="44" selection-end-line="78" selection-end-column="44" />
               <folding>
                 <element signature="imports" expanded="true" />
@@ -99,8 +98,8 @@
       <file leaf-file-name="BookHandler.java" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/BookHandler.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="-318">
-              <caret line="10" column="29" lean-forward="true" selection-start-line="10" selection-start-column="29" selection-end-line="10" selection-end-column="29" />
+            <state relative-caret-position="270">
+              <caret line="18" selection-start-line="18" selection-end-line="18" />
             </state>
           </provider>
         </entry>
@@ -153,6 +152,8 @@
       <find>update</find>
       <find>timeout</find>
       <find>returnBooks</find>
+      <find>inventory</find>
+      <find>searchbooks</find>
     </findStrings>
   </component>
   <component name="Git.Settings">
@@ -173,10 +174,10 @@
         <option value="$PROJECT_DIR$/src/Database.java" />
         <option value="$PROJECT_DIR$/src/DatabaseInterface.java" />
         <option value="$PROJECT_DIR$/src/UserHandler.java" />
-        <option value="$PROJECT_DIR$/src/BookHandler.java" />
         <option value="$PROJECT_DIR$/src/Student.java" />
-        <option value="$PROJECT_DIR$/src/LibraryManagementSystem.java" />
         <option value="$PROJECT_DIR$/src/Books.java" />
+        <option value="$PROJECT_DIR$/src/BookHandler.java" />
+        <option value="$PROJECT_DIR$/src/LibraryManagementSystem.java" />
       </list>
     </option>
   </component>
@@ -306,12 +307,12 @@
       <workItem from="1528946751672" duration="36387000" />
       <workItem from="1529052765500" duration="39000" />
       <workItem from="1529052854521" duration="8070000" />
-      <workItem from="1529292172277" duration="10130000" />
+      <workItem from="1529292172277" duration="11576000" />
     </task>
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="54626000" />
+    <option name="totallyTimeSpent" value="56072000" />
   </component>
   <component name="ToolWindowManager">
     <frame x="62" y="27" width="1858" height="1053" extended-state="6" />
@@ -634,13 +635,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/BookHandler.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="-318">
-          <caret line="10" column="29" lean-forward="true" selection-start-line="10" selection-start-column="29" selection-end-line="10" selection-end-column="29" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/src/UserHandler.java">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="387">
@@ -696,7 +690,7 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/src/Books.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="432">
+        <state relative-caret-position="972">
           <caret line="78" column="44" selection-start-line="78" selection-start-column="44" selection-end-line="78" selection-end-column="44" />
           <folding>
             <element signature="imports" expanded="true" />
@@ -710,10 +704,17 @@
         </state>
       </provider>
     </entry>
+    <entry file="file://$PROJECT_DIR$/src/BookHandler.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="270">
+          <caret line="18" selection-start-line="18" selection-end-line="18" />
+        </state>
+      </provider>
+    </entry>
     <entry file="file://$PROJECT_DIR$/src/LibraryManagementSystem.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="345">
-          <caret line="145" column="64" lean-forward="true" selection-start-line="145" selection-start-column="64" selection-end-line="145" selection-end-column="64" />
+        <state relative-caret-position="395">
+          <caret line="209" column="36" lean-forward="true" selection-start-line="209" selection-start-column="36" selection-end-line="209" selection-end-column="36" />
           <folding>
             <element signature="imports" expanded="true" />
           </folding>
