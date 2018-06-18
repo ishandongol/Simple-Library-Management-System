@@ -123,8 +123,60 @@ public class LibraryManagementSystem {
 
     private static void returnBooks() {
         addHeader();
-        System.out.println("Return Books");
-        underLine();
+        promptUser("Return Books");
+        String userID = sc.nextLine();
+        if (userID.matches("Ex")) {
+            System.out.println("Cancelled");
+        } else {
+            try {
+                User user = userHandler.read(Integer.valueOf(userID));
+                if (user instanceof Student) {
+                    System.out.print("Enter Book ID: ");
+                    String bookID = sc.nextLine();
+                    if (userID.matches("Ex")) {
+                        System.out.println("Cancelled");
+                    } else {
+                        try {
+
+                            Books books = bookHandler.read(Integer.valueOf(bookID));
+
+
+                            if (books != null) {
+                                if (((Student) user).removeIssuedBooks(books)) {
+                                    books.updateBooksQuantity();
+                                    books.returnBooks(user);
+                                    userHandler.update(Integer.valueOf(userID), user);
+                                    bookHandler.update(Integer.valueOf(bookID), books);
+                                    System.out.println("Books returned By:");
+                                    System.out.println(user);
+                                    System.out.println(books);
+                                    sc.nextLine();
+                                } else {
+                                    System.out.println("Books not Issued");
+                                    timeout();
+                                }
+
+                            } else {
+                                System.out.println("Books Not Found");
+                                timeout();
+                            }
+
+
+                        } catch (InputMismatchException e) {
+                            System.out.println("Enter a valid ID");
+                        }
+                    }
+
+
+                } else {
+                    System.out.println("Not Student");
+                    timeout();
+                }
+            } catch (InputMismatchException e) {
+                System.out.println("Enter a valid ID");
+            }
+        }
+
     }
 
     private static void manageUser() {
@@ -304,7 +356,7 @@ public class LibraryManagementSystem {
                                     System.out.println(user);
                                     System.out.println(books);
                                     sc.nextLine();
-                                }else{
+                                } else {
                                     System.out.println("Books Not Found");
                                     timeout();
                                 }

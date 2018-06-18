@@ -25,6 +25,10 @@ public class Student extends User {
         return false;
     }
 
+    public boolean removeIssuedBooks(Books books){
+        return this.getIssuedBooks().remove(books);
+    }
+
     private int totalBooksIssued(){
         return issuedBooks.size();
     }

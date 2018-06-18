@@ -75,7 +75,17 @@ public class Books {
         if(getCopies()>0){
             this.setCopies(this.getCopies()-1);
             return issuedBu.add(user);
+        }else{
+            System.out.println("Out of Stock");
         }
         return false;
+    }
+    public boolean returnBooks(User user){
+       return this.getIssuedBy().remove(user);
+
+    }
+
+    public void updateBooksQuantity() {
+        this.setCopies(this.getCopies()+1);
     }
 }
