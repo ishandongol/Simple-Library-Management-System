@@ -1,14 +1,15 @@
 
 public class UserHandler extends Database<User> {
+private int index;
+    public UserHandler() {
+        create(new Student(10, "Ishan", "Student"));
+        create(new Student(20, "Dongol", "student"));
+        create(new Student(30, "Lognod", "Student"));
+        create(new Student(40, "Uttam", "Student"));
+        create(new Student(50, "Pratyush", "Student"));
+        create(new Student(60, "Data", "Student"));
+    }
 
-   public UserHandler(){
-       create(new BasicUser(10,"Ishan","BasicUser"));
-       create(new BasicUser(10,"Dongol","BasicUser"));
-       create(new BasicUser(10,"Lognod","BasicUser"));
-       create(new BasicUser(10,"Uttam","BasicUser"));
-       create(new BasicUser(10,"Pratyush","BasicUser"));
-       create(new BasicUser(10,"Data","BasicUser"));
-   }
     @Override
     public boolean create(User object) {
         return super.create(object);
@@ -16,11 +17,11 @@ public class UserHandler extends Database<User> {
 
     @Override
     public User read(int id) {
-        int index =0;
+         index = 0;
         System.out.print("\033[H\033[2J");
 
-        for(User user: super.getCollection()){
-            if (user.getId()==id){
+        for (User user : super.getCollection()) {
+            if (user.getId() == id) {
                 return super.read(index);
             }
             index++;
@@ -29,11 +30,11 @@ public class UserHandler extends Database<User> {
     }
 
     public void read(String name) {
-        int index =0;
+        int index = 0;
         System.out.print("\033[H\033[2J");
 
-        for(User user: super.getCollection()){
-            if (user.getName().toLowerCase().matches("[0-9 a-zA-Z]*"+name.toLowerCase()+"[0-9 a-zA-Z]*")){
+        for (User user : super.getCollection()) {
+            if (user.getName().toLowerCase().matches("[0-9 a-zA-Z]*" + name.toLowerCase() + "[0-9 a-zA-Z]*")) {
                 System.out.println(super.read(index));
             }
             index++;
@@ -41,8 +42,9 @@ public class UserHandler extends Database<User> {
     }
 
     @Override
-    public boolean update() {
-        return super.update();
+    public User update(int id, User newValue) {
+        read(id);
+        return super.update(index, newValue);
     }
 
     @Override

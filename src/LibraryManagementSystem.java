@@ -144,19 +144,11 @@ public class LibraryManagementSystem {
             if (option == 1) {
 
                 Scanner scanner = new Scanner(System.in);
-//                underLine();
-//                System.out.print("* Type 'ex' to Exit *\n");
-//                underLine();
-//
-//
-//                if (input.matches("ex")) {
-//                    break;
-//                }
                 System.out.print("Enter ID, Name, Occupation :");
                 String input = scanner.nextLine();
                 List<String> userDetails = Arrays.asList(input.split(","));
-                if(userDetails.size()>3){
-                    userHandler.create(new BasicUser(Integer.valueOf(userDetails.get(0)), userDetails.get(1), userDetails.get(2)));
+                if (userDetails.size() > 3) {
+                    userHandler.create(new Student(Integer.valueOf(userDetails.get(0)), userDetails.get(1), userDetails.get(2)));
                     try {
                         TimeUnit.SECONDS.sleep(1);
                     } catch (InterruptedException e) {
@@ -174,7 +166,9 @@ public class LibraryManagementSystem {
                 }
 
             } else if (option == 2) {
-                //TODO: Update User
+                System.out.println("Not Available");
+                timeout();
+                //updateUser();
             } else if (option == 3) {
                 removeUser();
             } else if (option == 4) {
@@ -190,13 +184,59 @@ public class LibraryManagementSystem {
         }
     }
 
+    private static void updateUser() {
+        promptUser("Update User");
+        String input = sc.nextLine();
+        if (input.matches("ex")) {
+            System.out.println("Cancelled");
+        } else {
+            try {
+                User user = userHandler.read(Integer.valueOf(input));
+                System.out.println("Enter");
+
+            } catch (NumberFormatException e) {
+                System.out.println(" ");
+                System.out.println("Please enter a valid ID");
+            }
+
+        }
+        timeout();
+    }
+
     private static void removeUser() {
-        System.out.println(userHandler.delete(userHandler.read(100)));
+        promptUser("Delete User");
+        String input = sc.nextLine();
+        if (input.matches("ex")) {
+            System.out.println("Cancelled");
+        } else {
+            try {
+                System.out.println(userHandler.delete(userHandler.read(Integer.valueOf(input))));
+
+            } catch (NumberFormatException e) {
+                System.out.println(" ");
+                System.out.println("Please enter a valid ID");
+            }
+
+        }
+        timeout();
+    }
+
+    private static void timeout() {
         try {
             TimeUnit.SECONDS.sleep(2);
         } catch (InterruptedException e) {
             e.printStackTrace();
         }
+    }
+
+    private static void promptUser(String prompt) {
+        addHeader();
+        System.out.println(prompt);
+        underLine();
+        System.out.println("Enter 'ex' to Exit");
+        underLine();
+        System.out.print("Enter User ID (Number): ");
+        sc.nextLine();
     }
 
     private static void searchUser() {
@@ -232,7 +272,61 @@ public class LibraryManagementSystem {
 
     private static void issueBooks() {
         addHeader();
-        System.out.println("Issue Books");
+        promptUser("Issue Books");
+        String userID = sc.nextLine();
+        if (userID.matches("Ex")) {
+            System.out.println("Cancelled");
+        } else {
+            try {
+                User user = userHandler.read(Integer.valueOf(userID));
+                if (user instanceof Student) {
+                    System.out.print("Enter Book ID: ");
+                    String bookID = sc.nextLine();
+                    if (userID.matches("Ex")) {
+                        System.out.println("Cancelled");
+                    } else {
+                        try {
+                            boolean issuebooks = true;
+                            Books books = bookHandler.read(Integer.valueOf(bookID));
+                            List<Books> issuedBooks = ((Student) user).getIssuedBooks();
+                            for (Books book : issuedBooks) {
+                                if (book.getBookNumber() == Integer.valueOf(bookID)) {
+                                    issuebooks = false;
+                                }
+                            }
+                            if (issuebooks) {
+                                if (books != null) {
+                                    ((Student) user).setIssuedBooks(books);
+                                    books.issued(user);
+                                    userHandler.update(Integer.valueOf(userID), user);
+                                    bookHandler.update(Integer.valueOf(bookID), books);
+                                    System.out.println("Books Issued TO:");
+                                    System.out.println(user);
+                                    System.out.println(books);
+                                    sc.nextLine();
+                                }else{
+                                    System.out.println("Books Not Found");
+                                    timeout();
+                                }
+
+                            } else {
+                                System.out.println("Book already Issued");
+                                timeout();
+                            }
+                        } catch (InputMismatchException e) {
+                            System.out.println("Enter a valid ID");
+                        }
+                    }
+
+
+                } else {
+                    System.out.println("Not Student");
+                    timeout();
+                }
+            } catch (InputMismatchException e) {
+                System.out.println("Enter a valid ID");
+            }
+        }
         underLine();
     }
 

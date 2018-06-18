@@ -1,4 +1,5 @@
-
+import java.util.ArrayList;
+import java.util.List;
 
 public class Books {
     private int bookNumber;
@@ -7,6 +8,7 @@ public class Books {
     private String author;
     private int copies;
     private float cost;
+    List<User> issuedBu = new ArrayList<>();
 
     public Books(int bookNumber, String bookName, String ISBN, String author, int copies, float cost) {
         this.bookNumber = bookNumber;
@@ -31,8 +33,14 @@ public class Books {
                 this.getCopies() +
                 "'\nPrice: '" +
                 this.getCost() +
+                "'\nIssued By: '" +
+                this.getIssuedBy() +
                 "'"
                 ;
+    }
+
+    private List<User> getIssuedBy() {
+        return  issuedBu;
     }
 
     public String getBookName() {
@@ -57,5 +65,17 @@ public class Books {
 
     public float getCost() {
         return cost;
+    }
+
+    public void setCopies(int copies) {
+        this.copies = copies;
+    }
+
+    public boolean issued(User user) {
+        if(getCopies()>0){
+            this.setCopies(this.getCopies()-1);
+            return issuedBu.add(user);
+        }
+        return false;
     }
 }

@@ -2,7 +2,7 @@ public interface DatabaseInterface<T> {
 
     boolean create(T object);
     T read(int id);
-    boolean update();
+    T update(int id, T newValue);
     boolean delete(T object);
 
 }

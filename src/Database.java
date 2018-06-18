@@ -16,9 +16,8 @@ public class Database<T> implements DatabaseInterface<T> {
     }
 
     @Override
-    public boolean update() {
-        System.out.println("Dummy Update");
-        return false;
+    public T update(int id, T newValue) {
+       return collection.set(id,newValue);
     }
 
     @Override
